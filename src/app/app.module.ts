@@ -9,7 +9,8 @@ import { CurrentSongComponent } from './components/current-song/current-song.com
 @NgModule({
   declarations: [
     AppComponent,
-    CurrentSongComponent
+    CurrentSongComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
