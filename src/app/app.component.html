@@ -1,11 +1,11 @@
-<div class="grid grid-cols-[1fr__3fr] text-white h-screen">
+<div class="grid grid-cols-[1fr__3fr] text-white h-[94vh]">
   <app-sidebar (songs)="setSongs($event)"></app-sidebar>
-  <div class=" border rounded-lg" *ngIf="activeNav ==1 ">
+  <div class="rounded-lg h-[94vh]" *ngIf="activeNav ==1 ">
     <div class="flex flex-col">
-      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="inline-block min-w-full sm:px-6 lg:px-8 h-full">
+      <div class="sm:-mx-6 lg:-mx-0">
+        <div class="inline-block min-w-full h-full">
           <div class="overflow-hidden">
-            <div class="bg-gradient-to-tr from-purple-950 to-purple-400 h-[30vh]">
+            <div class="bg-gradient-to-tr from-purple-950 to-purple-400 h-[30vh] p-4">
               <h3>Liked Song</h3>
             </div>
             <table class="min-w-full text-left text-sm font-light bg-black">
@@ -17,7 +17,6 @@
                   <th scope="col" class="px-6 py-4">Album</th>
                   <th scope="col" class="px-6 py-4">Artist</th>
                   <th scope="col" class="px-6 py-4">Date Added</th>
-                  <!-- <th scope="col" class="px-6 py-4">Like</th> -->
                 </tr>
               </thead>
               <tbody>
@@ -29,7 +28,6 @@
                   <td class="whitespace-nowrap px-6 py-4">{{song.album}}</td>
                   <td class="whitespace-nowrap px-6 py-4">{{song.artist}}</td>
                   <td class="whitespace-nowrap px-6 py-4">{{song.date_added}}</td>
-                  <!-- <td class="whitespace-nowrap px-6 py-4">{{song.liked}}</td> -->
                 </tr>
               </tbody>
             </table>
@@ -39,5 +37,6 @@
     </div>
   </div>
 </div>
+<app-current-song></app-current-song>
   
-  <app-current-song></app-current-song>
+  
