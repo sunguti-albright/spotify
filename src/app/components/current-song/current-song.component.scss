@@ -1,5 +1,19 @@
-svg {
-  & :hover {
+.svg {
     cursor: pointer;
-  }
+  
+}
+
+.svg-hover{
+  cursor: pointer;
+  background-color: red;
+}
+
+/* Styles for the SVG container (default state) */
+.svg-default .path-default {
+  stroke: rgb(184, 191, 198);
+}
+
+/* Styles for the SVG container when hovered */
+.svg-default:hover .path-default {
+  stroke: white; /* Change this to the desired fill color on hover */
 }
