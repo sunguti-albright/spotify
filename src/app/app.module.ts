@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CurrentSongComponent } from './components/current-song/current-song.component';
+import { environment } from 'src/environments/environment';
+import { SupabaseClient, createClient } from '@supabase/supabase-js';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,20 @@ import { CurrentSongComponent } from './components/current-song/current-song.com
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide : SupabaseClient, useValue : createClient(environment.superbaseUrl, environment.superbaseKey)
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  supabase: any; 
+
+  constructor(){
+     // Initialize Supabase Client
+     const supabaseUrl = environment.superbaseUrl;
+     const supabaseKey = environment.superbaseKey;
+      this.supabase = createClient(environment.superbaseUrl, environment.superbaseKey);
+  }
+}

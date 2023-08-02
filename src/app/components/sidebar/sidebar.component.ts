@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SongsModel } from 'src/models/songs.model';
 import { Output, EventEmitter } from '@angular/core';
+import { SupabaseClient } from '@supabase/supabase-js';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,6 +11,8 @@ import { Output, EventEmitter } from '@angular/core';
 export class SidebarComponent implements OnInit {
   @Output() songs = new EventEmitter<any>();
   likedSongs: SongsModel[] = [];
+  items: any[] = [];
+
   activeNav: number = 1; //liked song
 
   songsObject = [
@@ -80,14 +83,33 @@ export class SidebarComponent implements OnInit {
     this.getLikedSongs;
   }
 
-  constructor() {
+  constructor(private supabase: SupabaseClient) {
     // for (const prop in this.songsObject) {
     //   this.likedSongs.push(this.songsObject[prop]);
     // }
+    this.getSupabaseSongs();
   }
+
+
+// let { data: songs, error } = await supabase
+// .from('songs')
+// .select('created_at')
+
 
   getLikedSongs() {
     console.log('yes');
     this.songs.emit(this.songsObject);
+  }
+  async getSupabaseSongs() {
+    
+    //get data from supabase table
+    const { data, error } = await this.supabase.from('songs').select('*');
+    if (error) {
+      console.log('error fetching data', error);
+    }
+    else{
+      this.items = data
+      console.log("data>>>", data)
+    }
   }
 }
