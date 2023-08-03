@@ -1,8 +1,12 @@
 .svg {
     cursor: pointer;
   
-}
 
+&:hover {
+  /* Add any hover effect you want here */
+  opacity: 0.8;
+}
+}
 .svg-hover{
   cursor: pointer;
   background-color: red;
