@@ -8,6 +8,16 @@ import {environment} from 'src/environments/environment'
 export class SupabaseService {
 public client : SupabaseClient;
   constructor() { 
-    this.client = createClient(environment.superbaseUrl,  environment.superbaseKey)
+
+//supabase email sign in
+  signInWithEmail(email : string){
+    return this.client.auth.signInWithOtp({
+      email,
+    })
+  }
+
+//logout
+  logoutUser(){
+    this.client.auth.signOut()
   }
 }
