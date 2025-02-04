@@ -18,7 +18,7 @@ export class SupabaseService {
       environment.superbaseKey
     );
 
-    const user = await this.client.auth.getUser();
+     const user =  this.client.auth.getUser();
     console.log('user :', user);
 
     if (user) {
@@ -52,7 +52,7 @@ export class SupabaseService {
   logoutUser() {
     this.client.auth.signOut();
   }
-  
+
 //method to export current user from private constructor
   get currentUser(){
     return this._currentUser.asObservable();
